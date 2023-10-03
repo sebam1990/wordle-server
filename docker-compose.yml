@@ -1,0 +1,26 @@
+version: "3"
+
+services: 
+
+  server:
+
+    container_name: wordle-server
+    restart: always
+    build: .
+    ports:
+      - 8080:3000
+    links:
+      - mongo
+    volumes:
+      - .:/usr/src/app
+
+  mongo:
+
+    container_name: mongoDB
+    image: mongo
+    environment:
+      - "MONGO_INITDB_DATABASE: wordleDB"
+      - "MONGO_INTIDB_ROOT_USERNAME=root"
+      - "MONGO_INITDB_ROOT_PASSWORD=root"
+    ports:
+      - 27017:27017
