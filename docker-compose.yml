@@ -5,7 +5,6 @@ services:
   server:
 
     container_name: wordle-server
-    restart: always
     build: .
     ports:
       - 8080:3000
@@ -19,7 +18,7 @@ services:
     container_name: mongoDB
     image: mongo
     environment:
-      - "MONGO_INITDB_DATABASE: wordleDB"
+      - "MONGO_INITDB_DATABASE=wordleDB"
       - "MONGO_INTIDB_ROOT_USERNAME=root"
       - "MONGO_INITDB_ROOT_PASSWORD=root"
     ports:
