@@ -1,7 +1,5 @@
 // Import dependencies
 
-    const express = require("express")
-
     const {response} = require("express")
 
 // Import models
@@ -14,15 +12,18 @@
 
     export const createUser = (req:any, res:any = response) => {
 
-        const {email, password} = req.body
+        // Get response data
 
-        res.json({
+            const {email, password} = req.body
 
-            msg: "User created",
-            user: {email, password}
+        // Save data in DB
 
-        })
+            res.status(201).json({
 
+                msg: "User created",
+                user: {email, password}
+
+            })
 
     }
 
@@ -32,7 +33,7 @@
 
         //connectDB()
 
-        res.json({
+        res.status(201).json({
 
             msg: "Verified email"
 
@@ -46,7 +47,7 @@
 
     export const loginUser = (req:any, res:any = response) => {
 
-        res.json({
+        res.status(201).json({
 
             msg: "User logged in",
             user: req.body
@@ -59,7 +60,7 @@
 
     export const listUsers = (req:any, res:any = response) => {
 
-        res.json({
+        res.status(200).json({
 
             msg: "List of users"
 
